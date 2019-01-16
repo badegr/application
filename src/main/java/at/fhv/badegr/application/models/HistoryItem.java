@@ -23,7 +23,7 @@ package at.fhv.badegr.application.models;
 	/**
 	 * Description of the property isRandomSearch.
 	 */
-	public boolean isRandomSearch = false;
+	public boolean isRandomSearch = null;
 	
 	// Start of user code (user defined attributes)
 	
