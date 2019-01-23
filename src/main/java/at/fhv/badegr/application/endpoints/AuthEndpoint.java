@@ -1,7 +1,7 @@
 package at.fhv.badegr.application.endpoints;
 
-// Start of user code (user defined imports)
 import org.springframework.beans.factory.annotation.Autowired;
+
 import at.fhv.badegr.application.handlers.AuthHandler;
 // End of user code
 

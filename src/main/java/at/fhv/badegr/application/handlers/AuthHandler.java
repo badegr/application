@@ -2,6 +2,10 @@ package at.fhv.badegr.application.handlers;
 
 // Start of user code (user defined imports)
 import java.security.MessageDigest;
+
+import org.springframework.stereotype.Component;
+
+@Component
 // End of user code
 
 public class AuthHandler {

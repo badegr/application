@@ -4,9 +4,12 @@ package at.fhv.badegr.application.handlers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import at.fhv.badegr.application.models.History;
 import at.fhv.badegr.application.models.HistoryItem;
 
+@Component
 // End of user code
 
 public class HistoryHandler {
