@@ -3,6 +3,8 @@ package at.fhv.badegr.application.handlers;
 // Start of user code (user defined imports)
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 // End of user code
@@ -11,6 +13,9 @@ public class SearchHandler {
 	// Start of user code (user defined attributes)
 	@Value("${giphy_api_key}")
 	private String apiKey;
+
+	@Autowired
+	private HistoryHandler historyEndpoint;
 	// End of user code
 
 	private static SearchHandler INSTANCE;
@@ -40,6 +45,9 @@ public class SearchHandler {
 		RestTemplate restTemplate = new RestTemplate();
 		String result = restTemplate.getForObject(url, String.class, uriVariables);
 		System.out.println(result);
+
+		// TODO: add to history
+		
 		return null;
 		// End of user code
 	}
@@ -54,6 +62,9 @@ public class SearchHandler {
 		RestTemplate restTemplate = new RestTemplate();
 		String result = restTemplate.getForObject(url, String.class, uriVariables);
 		System.out.println(result);
+
+		// TODO: add to history
+
 		return null;
 		// End of user code
 	}
