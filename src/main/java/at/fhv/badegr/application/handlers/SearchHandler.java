@@ -24,14 +24,14 @@ public class SearchHandler {
 	    return INSTANCE;
 	}
 	
-	public at.fhv.badegr.application.models.SearchResult search(String text, String token) throws Exception {
-		// Start of user code search
+	public at.fhv.badegr.application.models.SearchResult searchRandom(String token) throws Exception {
+		// Start of user code searchRandom
 		return null;
 		// End of user code
 	}
 	
-	public at.fhv.badegr.application.models.SearchResult searchRandom(String token) throws Exception {
-		// Start of user code searchRandom
+	public at.fhv.badegr.application.models.SearchResult search(String text, String token) throws Exception {
+		// Start of user code search
 		return null;
 		// End of user code
 	}

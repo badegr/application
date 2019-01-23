@@ -4,7 +4,7 @@ package at.fhv.badegr.application.models;
 
 // End of user code
 
-/*package*/ class HistoryItem {
+public class HistoryItem {
 	/**
 	 * Description of the property text.
 	 */
@@ -23,7 +23,7 @@ package at.fhv.badegr.application.models;
 	/**
 	 * Description of the property isRandomSearch.
 	 */
-	public boolean isRandomSearch = null;
+	public boolean isRandomSearch = false;
 	
 	// Start of user code (user defined attributes)
 	

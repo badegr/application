@@ -24,15 +24,15 @@ public class AuthHandler {
 	    return INSTANCE;
 	}
 	
-	public String login(String email) throws Exception {
-		// Start of user code login
-		return null;
-		// End of user code
-	}
-	
 	public void logout(String token) throws Exception {
 		// Start of user code logout
 		
+		// End of user code
+	}
+	
+	public String login(String email) throws Exception {
+		// Start of user code login
+		return null;
 		// End of user code
 	}
 	
