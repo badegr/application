@@ -17,21 +17,22 @@ public class SearchHandler {
 	@Autowired
 	private HistoryHandler historyEndpoint;
 	// End of user code
+	
 
 	private static SearchHandler INSTANCE;
-
-	private SearchHandler() {
-		// singleton
+	
+	private SearchHandler(){
+	    // singleton
 	}
-
-	public static SearchHandler getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new SearchHandler();
-		}
-
-		return INSTANCE;
+	
+	public static SearchHandler getInstance(){
+	    if(INSTANCE == null){
+	        INSTANCE = new SearchHandler();
+	    }
+	
+	    return INSTANCE;
 	}
-
+	
 	public at.fhv.badegr.application.models.SearchResult search(String text, String token) throws Exception {
 		// Start of user code search
 		String url = "https://api.giphy.com/v1/gifs/random";
@@ -51,7 +52,7 @@ public class SearchHandler {
 		return null;
 		// End of user code
 	}
-
+	
 	public at.fhv.badegr.application.models.SearchResult searchRandom(String token) throws Exception {
 		// Start of user code searchRandom
 		String url = "https://api.giphy.com/v1/gifs/random";
@@ -68,9 +69,9 @@ public class SearchHandler {
 		return null;
 		// End of user code
 	}
-
+	
 	// Start of user code (user defined operations)
 
 	// End of user code
-
+	
 }

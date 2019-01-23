@@ -13,17 +13,17 @@ public class SearchEndpoint {
 	// End of user code
 	
 	
-	@org.springframework.web.bind.annotation.PostMapping("")
-	public at.fhv.badegr.application.models.SearchResult searchRandom(@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
-		// Start of user code searchRandom
-		return searchHandler.searchRandom(token);
-		// End of user code
-	}
-	
 	@org.springframework.web.bind.annotation.PostMapping("/analyze")
 	public at.fhv.badegr.application.models.SearchResult search(@org.springframework.web.bind.annotation.RequestParam("text") String text, @org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code search
 		return searchHandler.search(text, token);
+		// End of user code
+	}
+	
+	@org.springframework.web.bind.annotation.PostMapping("")
+	public at.fhv.badegr.application.models.SearchResult searchRandom(@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
+		// Start of user code searchRandom
+		return searchHandler.searchRandom(token);
 		// End of user code
 	}
 	

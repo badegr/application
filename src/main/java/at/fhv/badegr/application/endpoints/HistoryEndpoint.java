@@ -11,15 +11,15 @@ public class HistoryEndpoint {
 	@Autowired
 	private HistoryHandler historyHandler;
 	// End of user code
-
+	
+	
 	@org.springframework.web.bind.annotation.GetMapping("/history")
-	public at.fhv.badegr.application.models.History getHistory(
-			@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
+	public at.fhv.badegr.application.models.History getHistory(@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code getHistory
 		return historyHandler.getHistory(token);
 		// End of user code
 	}
-
+	
 	// Start of user code (user defined operations)
 
 	// End of user code
