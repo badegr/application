@@ -1,31 +1,17 @@
-package at.fhv.badegr.application.models;
+package at.fhv.badegr.application.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "original" })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Images {
 
   @JsonProperty("original")
   private Original original;
-
-  /**
-   * No args constructor for use in serialization
-   * 
-   */
-  public Images() {
-  }
-
-  /**
-   * 
-   * @param original
-   */
-  public Images(Original original) {
-    super();
-    this.original = original;
-  }
 
   @JsonProperty("original")
   public Original getOriginal() {

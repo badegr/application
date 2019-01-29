@@ -1,30 +1,17 @@
-package at.fhv.badegr.application.models;
+package at.fhv.badegr.application.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "data" })
-public class GiphyRandomResponse {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class GiphyResponse {
 
   @JsonProperty("data")
-  private Data data = null;
-
-  /**
-   * No args constructor for use in serialization
-   * 
-   */
-  public GiphyRandomResponse() {
-  }
-
-  /**
-   * 
-   * @param data
-   */
-  public GiphyRandomResponse(Data data) {
-    this.data = data;
-  }
+  private Data data;
 
   @JsonProperty("data")
   public Data getData() {
