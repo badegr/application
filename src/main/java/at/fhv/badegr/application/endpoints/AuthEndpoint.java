@@ -22,7 +22,8 @@ public class AuthEndpoint {
 	@org.springframework.web.bind.annotation.PostMapping("/login")
 	public String login(@org.springframework.web.bind.annotation.RequestParam("email") String email) throws Exception {
 		// Start of user code login
-		return authHandler.login(email);
+		String token =  authHandler.login(email);
+		return "HTTP/1.1 200 OK " + token;
 		// End of user code
 	}
 
