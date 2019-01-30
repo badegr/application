@@ -53,7 +53,7 @@ public class SearchHandler {
 			}
 
 			SearchResult result = fetch(text);
-			historyHandler.addHistory(token, text, result);
+			historyHandler.addHistory(token, text, result, false);
 
 			return result;
 			// End of user code
@@ -67,7 +67,7 @@ public class SearchHandler {
 		// Start of user code searchRandom
 		SearchResult result = fetch(null);
 		
-		historyHandler.addHistory(token, null, result);
+		historyHandler.addHistory(token, null, result, true);
 
 		return result;
 		// End of user code
