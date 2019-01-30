@@ -26,7 +26,7 @@ public class AuthEndpoint {
 	public String login(@org.springframework.web.bind.annotation.RequestParam("email") String email) throws Exception {
 		// Start of user code login
 		String token =  authHandler.login(email);
-		return "HTTP/1.1 200 OK " + token;
+		return token;
 		// End of user code
 	}
 
