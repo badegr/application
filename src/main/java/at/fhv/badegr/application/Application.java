@@ -9,6 +9,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+// import at.fhv.badegr.application.handlers.SearchHandler;
+// import at.fhv.badegr.application.models.SearchResult;
+
 @SpringBootApplication
 public class Application {
 
@@ -36,8 +39,10 @@ public class Application {
 	 * @throws Exception
 	 */
 	// @Bean
-	// public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-	// return args -> {
-	// };
+	// public CommandLineRunner run(SearchHandler handler) throws Exception {
+	// 	return args -> {
+	// 		SearchResult result = handler.search("burrito", "");
+	// 		log.debug(result.url);
+	// 	};
 	// }
 }

@@ -41,6 +41,7 @@ public class HistoryHandler {
 			throws Exception {
 		// Start of user code addHistory
 		if (!historyMap.containsKey(token)) {
+			
 			historyMap.put(token, new History());
 		}
 

@@ -52,9 +52,8 @@ public class SearchHandler {
 				uriVariables.put("tag", text);
 			}
 
-			SearchResult result = fetch(url, uriVariables);
-
-			historyHandler.addHistory(token, text, result);
+			SearchResult result = fetch(text);
+			historyHandler.addHistory(token, null, result);
 
 			return result;
 			// End of user code
@@ -66,13 +65,8 @@ public class SearchHandler {
 
 	public at.fhv.badegr.application.models.SearchResult searchRandom(String token) throws Exception {
 		// Start of user code searchRandom
-		String url = "https://api.giphy.com/v1/gifs/random";
-
-		Map<String, String> uriVariables = new HashMap<>();
-		uriVariables.put("api_key", apiKey);
-
-		SearchResult result = fetch(url, uriVariables);
-
+		SearchResult result = fetch(null);
+		
 		historyHandler.addHistory(token, null, result);
 
 		return result;
@@ -80,11 +74,23 @@ public class SearchHandler {
 	}
 
 	// Start of user code (user defined operations)
-	private SearchResult fetch(String uri, Map<String, String> uriVariables) {
-		GiphyResponse response = restTemplate.getForObject(uri, GiphyResponse.class, uriVariables);
+	private SearchResult fetch(String text) {
+		
+		Map<String, String> uriVariables = new HashMap<>();
+		
+		String url = "https://api.giphy.com/v1/gifs/random?api_key={api_key}";
+		uriVariables.put("api_key", apiKey);
+		
+		if (text != null && text != "") {
+			url += "&tag={tag}";
+			uriVariables.put("tag", text);
+		}
+		
+		GiphyResponse response = restTemplate.getForObject(url, GiphyResponse.class, uriVariables);
 
 		SearchResult result = new SearchResult();
 		result.url = response.getData().getImages().getOriginal().getUrl();
+		
 		return result;
 	}
 	// End of user code
