@@ -1,33 +1,56 @@
+# build application - mvn compile (skip tests for now)
+# static code analysis - mvn sonar
+# unit tests - mvn test
+# integration tests - mvn integration-test
+# build documentation - mvn jacoco javadoc ...
+# deploy to staging - heroku plugin
+# performance tests & user acceptance tests - (jmeter & cucumber ( + selenium)) mvn verify
+# wait for ok - manual approve (search in travis docs)
+# deploy to production - heroku plugin
 jobs:
   include:
     - stage: build application
       script:
-        - ./mvnw install
+        - mvn compile
     - stage: static code analysis
       addons:
         sonarcloud:
           organization: badegr
           token: $SONAR_TOKEN
       script:
-        - mvn org.jacoco:jacoco-maven-plugin:prepare-agent javadoc:javadoc verify sonar:sonar 
+        - mvn sonar:sonar
+    - stage: unit tests
+      script:
+        - mvn test
+    - stage: integration tests
+      script:
+        - mvn integration-test
+    - stage: build documentation
+      script:
+        - mvn javadoc:javadoc
+        # - mvn org.jacoco:jacoco-maven-plugin:prepare-agent
         - cd ..
-        - "git clone https://github.com/badegr/docs.git"
-        - rm -rf docs/generated/jacoco-ut docs/generated/jacoco-it docs/generated/apidocs
-        - cp -r application/target/site/jacoco-ut docs/generated/
-        - cp -r application/target/site/jacoco-it docs/generated/
+        - git clone https://github.com/badegr/docs.git
+        - rm -rf docs/generated
         - cp -r application/target/site/apidocs docs/generated/
-        - cd docs/generated
-        - git add --all
-        - git commit -am "update documentation"
+        # - cp -r application/target/site/jacoco-ut docs/generated/
+        # - cp -r application/target/site/jacoco-it docs/generated/
+        - cd docs
+        - git add .
+        - git commit -m "update documentation"
         - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/badegr/docs.git" master
     - stage: deploy to staging
-      script: skip
-      deploy: &heroku
-        provider: heroku
-        app: badegr-giphy-staging
-        api_key: $HEROKU_API_KEY
-    - stage: deploy to production
-      script: skip
       deploy:
-        <<: *heroku
+        provider: heroku
+        api_key: $HEROKU_API_KEY
+        app: badegr-giphy-staging
+    - stage: performance tests & user acceptance tests
+      script:
+        - mvn verify
+    # - stage: manual approval
+      # ???
+    - stage: deploy to production
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_API_KEY
         app: badegr-giphy
