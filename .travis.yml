@@ -20,3 +20,14 @@ jobs:
         - git add --all
         - git commit -am "update documentation"
         - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/badegr/docs.git" master
+    - stage: deploy to staging
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: badegr-giphy-staging
+        api_key: $HEROKU_API_KEY
+    - stage: deploy to production
+      script: skip
+      deploy:
+        <<: *heroku
+        app: badegr-giphy
