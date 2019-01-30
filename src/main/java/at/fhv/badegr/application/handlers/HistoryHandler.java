@@ -47,7 +47,7 @@ public class HistoryHandler {
 		HistoryItem item = new HistoryItem();
 		item.setResult(result);
 		item.setText(text);
-		item.setRequested(0); // TODO: ???
+		item.setRequested(historyMap.get(token).getItems().size() + 1);
 		item.setIsRandomSearch(true); // TODO: do we even have non-random search?
 
 		historyMap.get(token).getItems().add(item);
