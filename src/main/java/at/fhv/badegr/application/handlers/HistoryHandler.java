@@ -45,10 +45,12 @@ public class HistoryHandler {
 		}
 
 		HistoryItem item = new HistoryItem();
-		item.result = result;
-		// TODO: add other properties which are currently not provided
+		item.setResult(result);
+		item.setText(text);
+		item.setRequested(0); // TODO: ???
+		item.setIsRandomSearch(true); // TODO: do we even have non-random search?
 
-		historyMap.get(token).items.add(item);
+		historyMap.get(token).getItems().add(item);
 		// End of user code
 	}
 

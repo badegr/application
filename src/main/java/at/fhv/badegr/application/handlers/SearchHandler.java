@@ -20,8 +20,8 @@ public class SearchHandler {
 	@Value("${giphy_api_key}")
 	private String apiKey;
 
-	// @Autowired
-	// private HistoryHandler historyHandler;
+	@Autowired
+	private HistoryHandler historyHandler;
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -53,7 +53,7 @@ public class SearchHandler {
 
 		SearchResult result = fetch(url, uriVariables);
 
-		// TODO: add to history
+		historyHandler.addHistory(token, text, result);
 
 		return result;
 		// End of user code
@@ -68,7 +68,7 @@ public class SearchHandler {
 
 		SearchResult result = fetch(url, uriVariables);
 
-		// TODO: add to history
+		historyHandler.addHistory(token, null, result);
 
 		return result;
 		// End of user code
