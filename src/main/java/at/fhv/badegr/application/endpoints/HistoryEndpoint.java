@@ -3,6 +3,7 @@ package at.fhv.badegr.application.endpoints;
 // Start of user code (user defined imports)
 import org.springframework.beans.factory.annotation.Autowired;
 import at.fhv.badegr.application.handlers.HistoryHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
 // End of user code
 
 @org.springframework.web.bind.annotation.RestController
@@ -12,6 +13,7 @@ public class HistoryEndpoint {
 	private HistoryHandler historyHandler;
 	// End of user code
 
+	@CrossOrigin(origins = "*")
 	@org.springframework.web.bind.annotation.GetMapping("/history")
 	public at.fhv.badegr.application.models.History getHistory(
 			@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {

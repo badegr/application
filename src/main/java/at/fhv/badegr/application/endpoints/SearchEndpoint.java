@@ -3,6 +3,7 @@ package at.fhv.badegr.application.endpoints;
 // Start of user code (user defined imports)
 import org.springframework.beans.factory.annotation.Autowired;
 import at.fhv.badegr.application.handlers.SearchHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
 // End of user code
 
 @org.springframework.web.bind.annotation.RestController
@@ -12,7 +13,8 @@ public class SearchEndpoint {
 	private SearchHandler searchHandler;
 	// End of user code
 
-	@org.springframework.web.bind.annotation.PostMapping("/analyze")
+    @CrossOrigin(origins = "*")
+	@org.springframework.web.bind.annotation.PostMapping("/search")
 	public at.fhv.badegr.application.models.SearchResult search(
 			@org.springframework.web.bind.annotation.RequestParam("text") String text,
 			@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
@@ -21,7 +23,8 @@ public class SearchEndpoint {
 		// End of user code
 	}
 
-	@org.springframework.web.bind.annotation.PostMapping("")
+    @CrossOrigin(origins = "*")
+	@org.springframework.web.bind.annotation.PostMapping("/searchRandom")
 	public at.fhv.badegr.application.models.SearchResult searchRandom(
 			@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code searchRandom
