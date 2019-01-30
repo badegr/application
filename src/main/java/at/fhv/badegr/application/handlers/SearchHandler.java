@@ -53,7 +53,7 @@ public class SearchHandler {
 			}
 
 			SearchResult result = fetch(text);
-			historyHandler.addHistory(token, null, result);
+			historyHandler.addHistory(token, text, result);
 
 			return result;
 			// End of user code
