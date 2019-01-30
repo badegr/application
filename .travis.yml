@@ -7,6 +7,8 @@
 # performance tests & user acceptance tests - (jmeter & cucumber ( + selenium)) mvn verify
 # wait for ok - manual approve (search in travis docs)
 # deploy to production - heroku plugin
+cache: bundler # enable caching
+
 jobs:
   include:
     - stage: build application
