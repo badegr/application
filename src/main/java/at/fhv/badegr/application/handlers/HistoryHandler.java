@@ -37,7 +37,7 @@ public class HistoryHandler {
 		// End of user code
 	}
 
-	public void addHistory(String token, String text, at.fhv.badegr.application.models.SearchResult result)
+	public void addHistory(String token, String text, at.fhv.badegr.application.models.SearchResult result, boolean isRandom)
 			throws Exception {
 		// Start of user code addHistory
 		if (!historyMap.containsKey(token)) {
@@ -48,8 +48,8 @@ public class HistoryHandler {
 		HistoryItem item = new HistoryItem();
 		item.setResult(result);
 		item.setText(text);
-		item.setRequested(0); // TODO: ???
-		item.setIsRandomSearch(true); // TODO: do we even have non-random search?
+		item.setRequested(historyMap.get(token).getItems().size() + 1);
+		item.setIsRandomSearch(isRandom);
 
 		historyMap.get(token).getItems().add(item);
 		// End of user code

@@ -42,20 +42,32 @@ public class SearchHandler {
 	}
 
 	public at.fhv.badegr.application.models.SearchResult search(String text, String token) throws Exception {
-		// Start of user code search
-		SearchResult result = fetch(text);
+		try {
+			// Start of user code search
+			String url = "https://api.giphy.com/v1/gifs/random";
 
-		historyHandler.addHistory(token, null, result);
-		
-		return result;
-		// End of user code
+			Map<String, String> uriVariables = new HashMap<>();
+			uriVariables.put("api_key", apiKey);
+			if (text != null && text != "") {
+				uriVariables.put("tag", text);
+			}
+
+			SearchResult result = fetch(text);
+			historyHandler.addHistory(token, text, result, false);
+
+			return result;
+			// End of user code
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 	public at.fhv.badegr.application.models.SearchResult searchRandom(String token) throws Exception {
 		// Start of user code searchRandom
 		SearchResult result = fetch(null);
 		
-		historyHandler.addHistory(token, null, result);
+		historyHandler.addHistory(token, null, result, true);
 
 		return result;
 		// End of user code

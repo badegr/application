@@ -52,7 +52,7 @@ public class ApplicationTests {
 	@Test
 	public void testAddToHistory() {
 		try {
-			hh.addHistory(testToken, null, testSearchResult);
+			hh.addHistory(testToken, null, testSearchResult, true);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

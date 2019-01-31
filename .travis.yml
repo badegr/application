@@ -48,6 +48,9 @@ jobs:
         app: badegr-giphy-staging
     - stage: performance tests & user acceptance tests
       script:
+        - cd ..
+        - "git clone https://github.com/badegr/tests.git"
+        - cd tests
         - mvn verify
     # - stage: manual approval
       # ???

@@ -3,6 +3,7 @@ package at.fhv.badegr.application.endpoints;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import at.fhv.badegr.application.handlers.AuthHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
 // End of user code
 
 @org.springframework.web.bind.annotation.RestController
@@ -12,6 +13,7 @@ public class AuthEndpoint {
 	private AuthHandler authHandler;
 	// End of user code
 
+	@CrossOrigin(origins = "*")
 	@org.springframework.web.bind.annotation.PostMapping("/logout")
 	public void logout(@org.springframework.web.bind.annotation.RequestParam("token") String token) throws Exception {
 		// Start of user code logout
@@ -19,10 +21,12 @@ public class AuthEndpoint {
 		// End of user code
 	}
 
+	@CrossOrigin(origins = "*")
 	@org.springframework.web.bind.annotation.PostMapping("/login")
 	public String login(@org.springframework.web.bind.annotation.RequestParam("email") String email) throws Exception {
 		// Start of user code login
-		return authHandler.login(email);
+		String token =  authHandler.login(email);
+		return token;
 		// End of user code
 	}
 

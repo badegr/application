@@ -1,9 +1,10 @@
 package at.fhv.badegr.application.handlers;
 
 // Start of user code (user defined imports)
-import java.security.MessageDigest;
 
 import org.springframework.stereotype.Component;
+import org.apache.commons.codec.digest.DigestUtils;
+
 
 @Component
 // End of user code
@@ -30,9 +31,7 @@ public class AuthHandler {
 	public String login(String email) throws Exception {
 		// Start of user code login
 		// Create MD5 hash of email as token
-		byte[] bytesOfMessage = email.getBytes("UTF-8");
-		MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-		return messageDigest.digest(bytesOfMessage).toString();
+		return DigestUtils.md2Hex(email);
 		// End of user code
 	}
 
