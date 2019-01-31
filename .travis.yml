@@ -7,8 +7,6 @@
 # performance tests & user acceptance tests - (jmeter & cucumber ( + selenium)) mvn verify
 # wait for ok - manual approve (search in travis docs)
 # deploy to production - heroku plugin
-cache: bundler # enable caching
-
 jobs:
   include:
     - stage: build application
@@ -42,7 +40,8 @@ jobs:
         - git commit -m "update documentation"
         - git push "https://${TRAVIS_GITHUB_TOKEN}@github.com/badegr/docs.git" master
     - stage: deploy to staging
-      deploy:
+      script: skip
+      deploy: &heroku
         provider: heroku
         api_key: $HEROKU_API_KEY
         app: badegr-giphy-staging
@@ -55,7 +54,7 @@ jobs:
     # - stage: manual approval
       # ???
     - stage: deploy to production
+      script: skip
       deploy:
-        provider: heroku
-        api_key: $HEROKU_API_KEY
+        <<: *heroku
         app: badegr-giphy
