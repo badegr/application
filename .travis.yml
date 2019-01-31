@@ -20,7 +20,7 @@ jobs:
           organization: badegr
           token: $SONAR_TOKEN
       script:
-        - mvn sonar:sonar
+        - mvn package sonar:sonar
     - stage: unit tests
       script:
         - mvn test
